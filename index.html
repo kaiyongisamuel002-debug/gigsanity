@@ -227,7 +227,7 @@ window.submitLog = async () => {
 async function loadHistory() {
   const list = document.getElementById('historyList');
   list.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div>Loading...</div>';
-  const q = query(collection(db,'logs'), where('uid','==',currentUser.uid), orderBy('date','desc'));
+  const q = query(collection(db,'logs'), where('uid','==',currentUser.uid), orderBy('date','asc'));
   const snap = await getDocs(q);
   if(snap.empty) { list.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><p>No logs yet.<br>Log your first day above.</p></div>'; return; }
   const scoreLabels = ['','Crisis','Rough','Holding','Stable','Resilient'];
